@@ -1,23 +1,22 @@
+import custom_requests
 import requests
 
 url = 'https://643e6d4cc72fda4a0bf6012a.mockapi.io/api/v4/users/test'
 
 
-def custom_request(self, method, url, **kwargs):
-    print(f'Performing {method} request to {url} with kwargs={kwargs}')
-
-    original_request = original_request_method
-
-    return original_request(self, method, url, **kwargs)
+def test_1():
+    requests.get(url)
+    requests.post(url)
 
 
-original_request_method = requests.sessions.Session.request
+def test_2():
+    requests.get(url)
+    requests.post(url)
 
-requests.sessions.Session.request = custom_request
 
 if __name__ == '__main__':
-    response = requests.get(url)
-    print(response.text)
+    test_1()
+    test_2()
 
-    response = requests.post(url)
-    print(response.text)
+    print(f'Logged requests: {custom_requests.get_request_log()}')
+
