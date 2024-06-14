@@ -5,9 +5,9 @@ import requests
 
 from graph import draw_graph, build_dependency_graphs
 
-url1 = 'https://example.com/first'
-url2 = 'https://example.com/second'
-url3 = 'https://example.com/third'
+url1 = 'https://example.com/1'
+url2 = 'https://example.com/2'
+url3 = 'https://example.com/3'
 url4 = 'https://example.com/4'
 
 
@@ -43,6 +43,6 @@ if __name__ == '__main__':
     data = custom_requests.get_request_log()
     pprint(data)
 
-    dependency_graphs, edges = build_dependency_graphs(data)
+    dependency_graphs = build_dependency_graphs(data)
 
-    draw_graph(dependency_graphs, edges)
+    draw_graph(dependency_graphs)
