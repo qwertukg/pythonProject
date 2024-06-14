@@ -1,3 +1,4 @@
+from collections import defaultdict
 from itertools import groupby
 from pprint import pprint
 
@@ -33,18 +34,17 @@ def draw_graph(G, edges):
 
     nx.draw_networkx_nodes(G, pos)
 
-    i = 0
+    grouped_edges = defaultdict(list)
     for edge in edges:
-        rad = i*0.4
-        i += 1
-        nx.draw_networkx_edges(G,
-                               pos,
-                               edgelist=[edge],
-                               connectionstyle=f'arc3, rad = {rad}',
-                               arrows=True)
+        grouped_edges[(edge[0], edge[1])].append(edge)
+    grouped_edges_list = [(key, values) for key, values in grouped_edges.items()]
 
-
-    # nx.draw_networkx_edges(G, pos, edgelist=edges, connectionstyle=f'arc3, rad = {0.25}')
+    for key, edges in grouped_edges_list:
+        i = 0
+        for edge in edges:
+            rad = i*0.2
+            i += 1
+            nx.draw_networkx_edges(G, pos, edgelist=[edge], connectionstyle=f'arc3, rad = {rad}', arrows=True)
 
     # nx.draw_networkx_edge_labels(G, pos, edge_labels={(u, v): f"{u} -> {v}" for u, v in edges})
 
