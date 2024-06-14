@@ -5,10 +5,10 @@ import requests
 
 from graph import draw_graph, build_dependency_graphs
 
-url1 = 'https://example.com/1'
-url2 = 'https://example.com/2'
-url3 = 'https://example.com/3'
-url4 = 'https://example.com/4'
+url1 = 'https://jsonplaceholder.typicode.com/1'
+url2 = 'https://jsonplaceholder.typicode.com/2'
+url3 = 'https://jsonplaceholder.typicode.com/3'
+url4 = 'https://jsonplaceholder.typicode.com/4'
 
 
 def test_1():
@@ -35,9 +35,9 @@ def test_4():
 
 
 if __name__ == '__main__':
-    test_1()
+    # test_1()
     test_2()
-    test_3()
+    # test_3()
     test_4()
 
     data = custom_requests.get_request_log()
